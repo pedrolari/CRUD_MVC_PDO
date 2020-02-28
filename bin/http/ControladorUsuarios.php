@@ -10,7 +10,7 @@ class ControladorUsuarios {
         $usuarioModel = new Usuarios();
         $id = $usuarioModel->insert($usuario);
         $$v = ($id > 0);
-        $respuesta = new Respuesta($$v ? EMensajes::INSERCION_EXITOSA : EMensajes::ERROR_INSERSION);
+        $respuesta = new Respuesta($$v ? EMensajes::INSERCION_EXITOSA : EMensajes::ERROR_INSERCION);
         $respuesta->setDatos($id);
         return $respuesta;
     }
