@@ -1,9 +1,13 @@
 <?php
 
-class ControladorUsuarios {
+class ControladorUsuarios extends Controller {
 
     function __construct() {
-        
+
+    }
+
+    public function index() {
+        return $this->view("welcome");  
     }
 
     public function insertarUsuario($usuario) {
@@ -27,7 +31,7 @@ class ControladorUsuarios {
     public function actualizarUsuario($usuario) {
         $usuarioModel = new Usuarios();
         $actualizados = $usuarioModel->where("id", "=", $usuario["idUsuario"])
-                ->update($usuario);
+        ->update($usuario);
         return [
             "codigo" => (($actualizados > 0) ? 1 : -1),
             "mensaje" => ($actualizados > 0) ? "Se ha actualizado el usuario correctamente." : "No se pudo actualizar el usuario.",
