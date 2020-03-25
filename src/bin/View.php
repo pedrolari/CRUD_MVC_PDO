@@ -3,42 +3,45 @@
 class View {
 
     protected $variables;
-    protected $output;
+    protected $ouput;
 
     function __construct() {
-
+        
     }
 
     public function render($file, $variables = null) {
-        $this->$variables = $variables;
+        $this->variables = $variables;
         $file = PATH_VIEWS . $file;
         ob_start();
         $this->includeFile($file);
         $output = ob_get_contents();
         ob_end_clean();
-        return $output;     
-
+        return $output;
     }
 
-
-    function includeFile($file){
-        //Creamos las variables en el contexto actual
-        if(isset($this->variables) && is_array($this->variables)){
+    public function includeFile($file) {
+        //Creamos las variables en el contexto actual...
+        if (isset($this->variables) && is_array($this->variables)) {
             foreach ($this->variables as $key => $value) {
-                global ${key};
-                ${key} = $value;
+                global ${$key};
+                ${$key} = $value;
             }
         }
 
-        if(file_exists($file)){
+        if (file_exists($file)) {
             return include $file;
-        } else if(file_exists($file.".php")) {
-            return include $file.".php";
-        } else if(file_exists($file.".html")) {
-            return include $file.".html";
+        } else
+        if (file_exists($file . ".php")) {
+            return include $file . ".php";
+        } else
+        if (file_exists($file . ".html")) {
+            return include $file . ".html";
+        } else
+        if (file_exists($file . ".htm")) {
+            return include $file . ".html";
         } else {
-            echo "<h2>No existe el fichero : $file</h2></br>";
+            echo "<h2>No existe el archivo: $file</h2><br/>";
         }
-
     }
+
 }

@@ -82,7 +82,6 @@ class Uri {
     public function call() {
         try {
             $this->request = $_REQUEST;
-
             if (is_string($this->function)) {
                 $this->functionFromController();
             } else {

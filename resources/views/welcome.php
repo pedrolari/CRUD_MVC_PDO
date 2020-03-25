@@ -15,7 +15,7 @@
 			</div>
 			<div class="card-body">
 				<div class="btn-group">
-					<a href="<?=URL::to("crearusuario")?>" class="btn btn-primary">Crear Usuario</a>
+					<a href="<?=URL::to("usuarios/form/crear")?>" class="btn btn-primary">Crear Usuario</a>
 				</div>
 				<hr>
 				<h4 class="card-title mb4">Listar Usuarios con Ajax</h4>

@@ -7,7 +7,7 @@ var __app = {
         return __app.urlbase + url;
     },
     validarRespuesta: function (respuesta) {
-        if (respuesta.codigo < 0) {
+        if ((respuesta && !respuesta.codigo) || respuesta.codigo < 0) {
             respuesta = false;
         }
         return respuesta;

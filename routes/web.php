@@ -1,15 +1,9 @@
 <?php
 
-// Route::get("/", function() { return "Hola Deplynautas"; });
-
+//VISTAS
 Route::get("/", ControladorUsuarios::class);
 Route::get("/listar_usuarios", ControladorUsuarios::class);
+Route::get("/usuarios/form/crear", ControladorUsuarios::class."@formCrearUsuario");
 
-Route::get("/saludame/:nombre", function($nombre, Request $request) {
-    return "Hola " . $nombre . " tu edad es " . $request->edad . " años.";
-});
-
-
-Route::get("login", function() {
-    return "Login ";
-});
+//RECURSOS
+Route::post("/usuarios/registrar", ControladorUsuarios::class."@insertarUsuario");
